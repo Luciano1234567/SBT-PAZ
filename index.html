@@ -277,7 +277,6 @@
     }
 
     .news-grid,
-    .cards-3,
     .impact-grid,
     .footer-grid {
       display: grid;
@@ -285,11 +284,9 @@
     }
 
     .news-grid { grid-template-columns: 1.2fr .8fr .8fr; }
-    .cards-3 { grid-template-columns: repeat(3, 1fr); }
     .impact-grid { grid-template-columns: repeat(4, 1fr); }
     .footer-grid { grid-template-columns: 1.2fr .8fr .8fr; }
 
-    .card,
     .news-card,
     .impact-card,
     .quote {
@@ -309,7 +306,6 @@
     .news-card.featured img { height: 320px; }
 
     .news-body,
-    .card-body,
     .impact-card,
     .quote {
       padding: 20px;
@@ -325,7 +321,6 @@
     }
 
     .news-card h3,
-    .card h3,
     .quote h3 {
       margin: 0 0 10px;
       font-size: 1.2rem;
@@ -333,10 +328,8 @@
     }
 
     .news-card p,
-    .card p,
     .impact-card p,
-    .quote p,
-    .meta {
+    .quote p {
       margin: 0;
       color: var(--muted);
     }
@@ -383,7 +376,10 @@
     }
 
     .nft-copy h2,
-    .mission-panel h2 { margin-top: 0; font-size: clamp(1.8rem, 3vw, 2.8rem); }
+    .mission-panel h2 {
+      margin-top: 0;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+    }
 
     .list {
       display: grid;
@@ -536,7 +532,6 @@
     @media (max-width: 1100px) {
       .hero-grid,
       .news-grid,
-      .cards-3,
       .impact-grid,
       .nft-layout,
       .transparency-grid,
@@ -548,7 +543,6 @@
 
       .hero-copy,
       .hero-visual { min-height: unset; }
-
       .hero-stats { grid-template-columns: 1fr; }
     }
 
@@ -582,7 +576,7 @@
   <header class="topbar">
     <div class="container nav">
       <a class="brand" href="#inicio">
-        <img src="img/logo_paz_full.png" alt="Logo PAZ" onerror="this.src='img/logo_paz_symbol.png'">
+        <img src="img/logo.png" alt="Logo PAZ" onerror="this.src='img/logo_paz_full.png'">
         <span>Projeto PAZ</span>
       </a>
       <nav class="menu">
@@ -629,7 +623,7 @@
         </div>
 
         <div class="hero-visual">
-          <img src="img/banner_paz_impacto.png" alt="Banner do Projeto PAZ" onerror="this.src='img/banner_paz.png'">
+          <img src="img/banner.png" alt="Banner do Projeto PAZ" onerror="this.src='img/banner_paz.png'">
           <div class="hero-card">
             <strong>Uma home viva, visual e confiável.</strong>
             <p>Com notícias, identidade forte, NFT de orgulho e espaço para evolução do projeto.</p>
@@ -650,7 +644,7 @@
 
         <div class="news-grid">
           <article class="news-card featured">
-            <img src="img/noticia1.jpg" alt="Notícia em destaque" />
+            <img src="img/simbolo 1.png" alt="Notícia em destaque" />
             <div class="news-body">
               <span class="tag">Destaque</span>
               <h3>PAZ avança na construção da infraestrutura digital do projeto</h3>
@@ -662,7 +656,7 @@
           </article>
 
           <article class="news-card">
-            <img src="img/noticia2.jpg" alt="Atualização visual" />
+            <img src="img/simbolo 2.png" alt="Atualização visual" />
             <div class="news-body">
               <span class="tag">Atualização</span>
               <h3>Novo logo e linguagem visual reforçam a identidade da PAZ</h3>
@@ -671,7 +665,7 @@
           </article>
 
           <article class="news-card">
-            <img src="img/noticia3.jpg" alt="NFT da PAZ" />
+            <img src="img/simbolo 3.png" alt="NFT da PAZ" />
             <div class="news-body">
               <span class="tag">NFT</span>
               <h3>Reconhecimento digital ganha espaço central na experiência do apoiador</h3>
@@ -740,7 +734,7 @@
     <section id="nft">
       <div class="container nft-layout">
         <div class="nft-visual">
-          <img src="img/sbt_bronze.png" alt="NFT SBT Bronze" onerror="this.src='img/nft_paz.jpg'">
+          <img src="img/simbolo 1.png" alt="NFT PAZ">
         </div>
         <div class="nft-copy">
           <span class="tag">Orgulho de ter este NFT</span>
