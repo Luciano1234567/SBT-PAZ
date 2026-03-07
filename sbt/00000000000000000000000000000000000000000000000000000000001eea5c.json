@@ -1,0 +1,11 @@
+{
+  "name": "PAZ SBT Bronze — 2026-04",
+  "description": "Recibo de doação PAZ (Soulbound) — nível Bronze — mês 2026-04.",
+  "image": "https://luciano1234567.github.io/SBT-PAZ/img/bronze.png",
+  "attributes": [
+    { "trait_type": "month", "value": "2026-04" },
+    { "trait_type": "tier", "value": "Bronze" },
+    { "trait_type": "code", "value": 4 },
+    { "trait_type": "tokenId", "value": 2026044 }
+  ]
+}
