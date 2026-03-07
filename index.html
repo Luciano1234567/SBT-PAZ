@@ -1,1 +1,870 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PAZ | Transparência e impacto</title>
+  <meta name="description" content="Projeto PAZ — solidariedade, transparência e reconhecimento digital." />
+  <style>
+    :root {
+      --bg: #070b14;
+      --bg-soft: #0e1526;
+      --card: rgba(255,255,255,0.06);
+      --line: rgba(255,255,255,0.12);
+      --text: #f4f7fb;
+      --muted: #b8c4d9;
+      --gold: #f2b705;
+      --gold-2: #d99a00;
+      --blue: #12264d;
+      --blue-2: #1e3d78;
+      --shadow: 0 20px 60px rgba(0,0,0,.35);
+      --radius: 22px;
+      --max: 1200px;
+    }
 
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(242,183,5,.15), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(30,61,120,.25), transparent 32%),
+        linear-gradient(180deg, #060914 0%, #0a1020 100%);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(14px);
+      background: rgba(6, 9, 20, 0.72);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+
+    .brand img {
+      width: 54px;
+      height: 54px;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 20px rgba(242,183,5,.15));
+    }
+
+    .brand span {
+      font-size: 1.1rem;
+    }
+
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 18px;
+      color: var(--muted);
+      font-size: .96rem;
+    }
+
+    .menu a:hover { color: #fff; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: .25s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-2) 100%);
+      color: #111;
+      box-shadow: 0 16px 34px rgba(242,183,5,.22);
+    }
+
+    .btn-primary:hover { transform: translateY(-2px); }
+
+    .btn-outline {
+      border-color: rgba(255,255,255,0.18);
+      color: #fff;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.08);
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      padding: 42px 0 24px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .hero-copy,
+    .hero-visual {
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: var(--shadow);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+    }
+
+    .hero-copy {
+      padding: 42px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      min-height: 520px;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(242,183,5,.18), transparent 35%),
+        linear-gradient(180deg, rgba(18,38,77,.9), rgba(7,11,20,.95));
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      color: #ffe7a3;
+      background: rgba(242,183,5,0.12);
+      border: 1px solid rgba(242,183,5,0.18);
+      font-size: .88rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.4rem, 5vw, 4.6rem);
+      line-height: .98;
+      letter-spacing: -.04em;
+      max-width: 11ch;
+    }
+
+    .hero-copy p {
+      color: var(--muted);
+      font-size: 1.12rem;
+      max-width: 56ch;
+      margin: 20px 0 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .hero-stats {
+      margin-top: 34px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .stat {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.4rem;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .hero-visual {
+      min-height: 520px;
+      position: relative;
+      background: #09111f;
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-card {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      padding: 18px 18px 16px;
+      border-radius: 20px;
+      background: rgba(6,9,20,.72);
+      border: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(16px);
+    }
+
+    .hero-card strong {
+      display: block;
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .hero-card p {
+      color: var(--muted);
+      font-size: .95rem;
+      margin: 0;
+    }
+
+    section {
+      padding: 34px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      letter-spacing: -.03em;
+    }
+
+    .section-head p {
+      margin: 0;
+      max-width: 58ch;
+      color: var(--muted);
+    }
+
+    .news-grid,
+    .cards-3,
+    .impact-grid,
+    .footer-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .news-grid { grid-template-columns: 1.2fr .8fr .8fr; }
+    .cards-3 { grid-template-columns: repeat(3, 1fr); }
+    .impact-grid { grid-template-columns: repeat(4, 1fr); }
+    .footer-grid { grid-template-columns: 1.2fr .8fr .8fr; }
+
+    .card,
+    .news-card,
+    .impact-card,
+    .quote {
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border: 1px solid rgba(255,255,255,0.09);
+      box-shadow: var(--shadow);
+    }
+
+    .news-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .news-card.featured img { height: 320px; }
+
+    .news-body,
+    .card-body,
+    .impact-card,
+    .quote {
+      padding: 20px;
+    }
+
+    .tag {
+      display: inline-block;
+      margin-bottom: 10px;
+      font-size: .8rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: #ffe7a3;
+    }
+
+    .news-card h3,
+    .card h3,
+    .quote h3 {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+      line-height: 1.15;
+    }
+
+    .news-card p,
+    .card p,
+    .impact-card p,
+    .quote p,
+    .meta {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .impact-card strong {
+      display: block;
+      font-size: 2rem;
+      margin-bottom: 8px;
+      color: var(--gold);
+    }
+
+    .nft-layout {
+      display: grid;
+      grid-template-columns: .78fr 1.22fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .nft-visual,
+    .nft-copy,
+    .mission-panel {
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.1);
+      box-shadow: var(--shadow);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+    }
+
+    .nft-visual {
+      padding: 22px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(242,183,5,.18), transparent 40%),
+        linear-gradient(180deg, rgba(18,38,77,.9), rgba(7,11,20,.95));
+    }
+
+    .nft-visual img {
+      width: 100%;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.12);
+    }
+
+    .nft-copy {
+      padding: 32px;
+    }
+
+    .nft-copy h2,
+    .mission-panel h2 { margin-top: 0; font-size: clamp(1.8rem, 3vw, 2.8rem); }
+
+    .list {
+      display: grid;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .list-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-top: 8px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-2));
+      box-shadow: 0 0 0 6px rgba(242,183,5,.12);
+      flex: 0 0 auto;
+    }
+
+    .mission-panel {
+      padding: 28px;
+      background:
+        radial-gradient(circle at 100% 0%, rgba(242,183,5,.15), transparent 35%),
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04));
+    }
+
+    .mission-panel p { color: var(--muted); }
+
+    .transparency-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 24px;
+    }
+
+    .wallet {
+      font-family: monospace;
+      font-size: .98rem;
+      padding: 16px 18px;
+      border-radius: 16px;
+      background: rgba(0,0,0,.24);
+      color: #ffe7a3;
+      overflow: auto;
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .step {
+      padding: 20px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .step strong {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      margin-bottom: 12px;
+      background: rgba(242,183,5,.14);
+      color: #ffe7a3;
+    }
+
+    .quote {
+      text-align: left;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(242,183,5,.16), transparent 35%),
+        linear-gradient(180deg, rgba(18,38,77,.9), rgba(7,11,20,.96));
+    }
+
+    .quote small {
+      display: inline-block;
+      margin-top: 14px;
+      color: #ffe7a3;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .cta {
+      padding-bottom: 56px;
+    }
+
+    .cta-box {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+      border-radius: 30px;
+      padding: 32px;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(242,183,5,.18), transparent 36%),
+        linear-gradient(90deg, rgba(18,38,77,.92), rgba(10,16,32,.98));
+      border: 1px solid rgba(255,255,255,.1);
+      box-shadow: var(--shadow);
+    }
+
+    .cta-box h2 {
+      margin: 0 0 10px;
+      font-size: clamp(1.8rem, 3vw, 3rem);
+      line-height: 1;
+    }
+
+    .cta-box p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 62ch;
+    }
+
+    footer {
+      padding: 0 0 42px;
+      color: var(--muted);
+    }
+
+    .footer-box {
+      padding: 30px;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer-box h3 {
+      margin-top: 0;
+      color: #fff;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 10px;
+    }
+
+    .copyright {
+      margin-top: 18px;
+      font-size: .92rem;
+      color: #93a2be;
+    }
+
+    @media (max-width: 1100px) {
+      .hero-grid,
+      .news-grid,
+      .cards-3,
+      .impact-grid,
+      .nft-layout,
+      .transparency-grid,
+      .steps,
+      .footer-grid,
+      .cta-box {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy,
+      .hero-visual { min-height: unset; }
+
+      .hero-stats { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 760px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 16px 0;
+      }
+
+      .menu {
+        justify-content: flex-start;
+      }
+
+      .hero-copy,
+      .nft-copy,
+      .mission-panel,
+      .footer-box,
+      .cta-box {
+        padding: 24px;
+      }
+
+      .section-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#inicio">
+        <img src="img/logo_paz_full.png" alt="Logo PAZ" onerror="this.src='img/logo_paz_symbol.png'">
+        <span>Projeto PAZ</span>
+      </a>
+      <nav class="menu">
+        <a href="#inicio">Início</a>
+        <a href="#noticias">Notícias</a>
+        <a href="#impacto">Impacto</a>
+        <a href="#nft">NFT</a>
+        <a href="#transparencia">Transparência</a>
+        <a href="#manifesto">Manifesto</a>
+        <a href="#participar">Participar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="kicker">Solidariedade • Transparência • Tecnologia</span>
+          <h1>Transformando solidariedade em impacto.</h1>
+          <p>
+            A PAZ usa tecnologia e reconhecimento digital para fortalecer contribuições,
+            ampliar confiança e construir uma comunidade orgulhosa de apoiar algo que faz sentido.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#participar">Apoiar o projeto</a>
+            <a class="btn btn-outline" href="#transparencia">Ver transparência</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat">
+              <strong>On-chain</strong>
+              <span>Reconhecimento digital verificável</span>
+            </div>
+            <div class="stat">
+              <strong>Web3</strong>
+              <span>Estrutura preparada para crescimento</span>
+            </div>
+            <div class="stat">
+              <strong>Impacto</strong>
+              <span>Propósito antes de especulação</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <img src="img/banner_paz_impacto.png" alt="Banner do Projeto PAZ" onerror="this.src='img/banner_paz.png'">
+          <div class="hero-card">
+            <strong>Uma home viva, visual e confiável.</strong>
+            <p>Com notícias, identidade forte, NFT de orgulho e espaço para evolução do projeto.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="noticias">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Últimas notícias</h2>
+            <p>Essa área deve deixar a homepage ativa. Troque os títulos e textos à medida que o projeto avançar.</p>
+          </div>
+          <a class="btn btn-outline" href="#">Ver todas</a>
+        </div>
+
+        <div class="news-grid">
+          <article class="news-card featured">
+            <img src="img/noticia1.jpg" alt="Notícia em destaque" />
+            <div class="news-body">
+              <span class="tag">Destaque</span>
+              <h3>PAZ avança na construção da infraestrutura digital do projeto</h3>
+              <p>
+                O site, a identidade visual e a base de reconhecimento on-chain entram em fase de consolidação,
+                preparando o projeto para comunicar propósito com mais força e confiança.
+              </p>
+            </div>
+          </article>
+
+          <article class="news-card">
+            <img src="img/noticia2.jpg" alt="Atualização visual" />
+            <div class="news-body">
+              <span class="tag">Atualização</span>
+              <h3>Novo logo e linguagem visual reforçam a identidade da PAZ</h3>
+              <p>Uma identidade mais limpa, forte e memorável, alinhada ao universo digital e à missão social.</p>
+            </div>
+          </article>
+
+          <article class="news-card">
+            <img src="img/noticia3.jpg" alt="NFT da PAZ" />
+            <div class="news-body">
+              <span class="tag">NFT</span>
+              <h3>Reconhecimento digital ganha espaço central na experiência do apoiador</h3>
+              <p>O NFT deixa de ser apenas técnico e passa a representar orgulho, participação e pertencimento.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="impacto">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Impacto e confiança</h2>
+            <p>Mesmo antes de publicar dados reais, a home pode reservar a estrutura dos indicadores que depois serão atualizados.</p>
+          </div>
+        </div>
+
+        <div class="impact-grid">
+          <div class="impact-card">
+            <strong>01</strong>
+            <p>Projeto em estruturação com foco institucional e tecnologia como meio.</p>
+          </div>
+          <div class="impact-card">
+            <strong>12–11</strong>
+            <p>Ciclo mensal sugerido para competência, fechamento e organização do reconhecimento.</p>
+          </div>
+          <div class="impact-card">
+            <strong>NFT</strong>
+            <p>Reconhecimento digital pensado para gerar pertencimento e orgulho real.</p>
+          </div>
+          <div class="impact-card">
+            <strong>PAZ</strong>
+            <p>Uma marca que une propósito, transparência e visão de longo prazo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container steps">
+        <div class="step">
+          <strong>1</strong>
+          <h3>Conheça</h3>
+          <p>Entenda a missão, a proposta do projeto e o papel da tecnologia.</p>
+        </div>
+        <div class="step">
+          <strong>2</strong>
+          <h3>Apoie</h3>
+          <p>Contribua de forma organizada, com identidade visual e narrativa de confiança.</p>
+        </div>
+        <div class="step">
+          <strong>3</strong>
+          <h3>Receba</h3>
+          <p>Ganhe um reconhecimento digital que representa participação em algo maior.</p>
+        </div>
+        <div class="step">
+          <strong>4</strong>
+          <h3>Acompanhe</h3>
+          <p>Veja a evolução do projeto com clareza, comunicação e rastreabilidade.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="nft">
+      <div class="container nft-layout">
+        <div class="nft-visual">
+          <img src="img/sbt_bronze.png" alt="NFT SBT Bronze" onerror="this.src='img/nft_paz.jpg'">
+        </div>
+        <div class="nft-copy">
+          <span class="tag">Orgulho de ter este NFT</span>
+          <h2>Mais do que um item digital.</h2>
+          <p>
+            O NFT da PAZ deve representar apoio, presença, identidade e compromisso com uma causa que merece ser construída com seriedade.
+          </p>
+          <div class="list">
+            <div class="list-item">
+              <span class="dot"></span>
+              <div>
+                <strong>Reconhecimento</strong>
+                <p>O apoiador carrega um símbolo visível da sua participação.</p>
+              </div>
+            </div>
+            <div class="list-item">
+              <span class="dot"></span>
+              <div>
+                <strong>Pertencimento</strong>
+                <p>O NFT cria vínculo com a comunidade e com a evolução do projeto.</p>
+              </div>
+            </div>
+            <div class="list-item">
+              <span class="dot"></span>
+              <div>
+                <strong>Memória do impacto</strong>
+                <p>Ele registra digitalmente que aquela contribuição fez parte de algo maior.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="transparencia">
+      <div class="container transparency-grid">
+        <div class="mission-panel">
+          <span class="tag">Transparência que pode ser acompanhada</span>
+          <h2>Clareza desde o início.</h2>
+          <p>
+            A PAZ deve parecer séria logo na primeira visita. Esta seção é onde entram wallet pública,
+            relatórios, métricas e o compromisso com prestação de contas.
+          </p>
+          <div class="wallet">0x0000...SUA-CARTEIRA-OFICIAL...0000</div>
+          <div class="list">
+            <div class="list-item">
+              <span class="dot"></span>
+              <div>
+                <strong>Wallet pública</strong>
+                <p>Endereço oficial para acompanhamento das entradas do projeto.</p>
+              </div>
+            </div>
+            <div class="list-item">
+              <span class="dot"></span>
+              <div>
+                <strong>Relatórios mensais</strong>
+                <p>Resumo de evolução, campanhas, reconhecimentos e próximos passos.</p>
+              </div>
+            </div>
+            <div class="list-item">
+              <span class="dot"></span>
+              <div>
+                <strong>Governança gradual</strong>
+                <p>Primeiro a operação fica sólida, depois as expansões entram com mais segurança.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="quote" id="manifesto">
+          <span class="tag">Origem do projeto</span>
+          <h3>Como surgiu a PAZ</h3>
+          <p>
+            A PAZ nasceu da iniciativa de transformar conhecimento e experiência em uma estrutura transparente e moderna para apoiar iniciativas de impacto social, utilizando tecnologia para fortalecer confiança, participação e propósito.
+          </p>
+          <small>Manifesto do fundador</small>
+        </aside>
+      </div>
+    </section>
+
+    <section id="participar" class="cta">
+      <div class="container cta-box">
+        <div>
+          <h2>Participe da construção da PAZ.</h2>
+          <p>
+            A primeira fase do site deve apresentar o projeto com força visual, confiança institucional e uma linguagem que valorize tanto o propósito quanto a inovação digital.
+          </p>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#">Quero apoiar</a>
+          <a class="btn btn-outline" href="#noticias">Ver atualizações</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-box">
+      <div class="footer-grid">
+        <div>
+          <h3>Projeto PAZ</h3>
+          <p>
+            Uma estrutura de solidariedade, transparência e reconhecimento digital, construída para unir impacto social e tecnologia com propósito.
+          </p>
+        </div>
+        <div>
+          <h3>Navegação</h3>
+          <div class="footer-links">
+            <a href="#inicio">Início</a>
+            <a href="#nft">Reconhecimento digital</a>
+            <a href="#transparencia">Transparência</a>
+          </div>
+        </div>
+        <div>
+          <h3>Próximos ajustes</h3>
+          <div class="footer-links">
+            <span>Substituir imagens finais</span>
+            <span>Inserir wallet real</span>
+            <span>Publicar notícias reais</span>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">PAZ — propósito, transparência e impacto com apoio da tecnologia.</div>
+    </div>
+  </footer>
+</body>
+</html>
