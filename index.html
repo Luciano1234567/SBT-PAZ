@@ -25,6 +25,135 @@
       height: 56px;
     }
 
+    .levels-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px 20px;
+}
+
+.levels-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.levels-header h2 {
+  font-size: 38px;
+  margin: 0 0 12px;
+  color: #f2b705;
+}
+
+.levels-header p {
+  max-width: 820px;
+  margin: 0 auto;
+  color: #c4d0e3;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.levels-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  margin-top: 30px;
+}
+
+.level-card {
+  background: linear-gradient(180deg, #0f1b33 0%, #0a1428 100%);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.28);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.level-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 38px rgba(0,0,0,0.35);
+}
+
+.level-card img {
+  width: 100%;
+  height: 240px;
+  object-fit: contain;
+  object-position: center;
+  background: #081120;
+  padding: 10px;
+}
+
+.level-content {
+  padding: 20px;
+}
+
+.level-tag {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  margin-bottom: 14px;
+  background: rgba(242,183,5,0.12);
+  color: #f2d47c;
+}
+
+.level-content h3 {
+  margin: 0 0 8px;
+  font-size: 24px;
+  color: #ffffff;
+}
+
+.level-subtitle {
+  font-size: 16px;
+  font-weight: bold;
+  color: #f2b705;
+  margin-bottom: 10px;
+}
+
+.level-content p {
+  margin: 0;
+  color: #c4d0e3;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.levels-progress {
+  text-align: center;
+  margin: 28px 0 18px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #f2d47c;
+  letter-spacing: 1px;
+}
+
+.levels-footer-text {
+  max-width: 900px;
+  margin: 18px auto 0;
+  text-align: center;
+  color: #d6deec;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+@media (max-width: 1100px) {
+  .levels-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .levels-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .levels-header h2 {
+    font-size: 30px;
+  }
+
+  .levels-header p,
+  .levels-footer-text {
+    font-size: 16px;
+  }
+}
     nav a {
       color: #d7e1f0;
       text-decoration: none;
